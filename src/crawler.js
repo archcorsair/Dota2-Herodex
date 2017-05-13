@@ -8,6 +8,7 @@ const app = express()
 app.disable('x-powered-by')
 app.use(bodyParser.json())
 app.use(morgan('dev'))
+const serverPort = process.env.PORT || 4000
 
 let loading = true
 
@@ -28,8 +29,8 @@ app.get('/heroes', (req, res) => {
 
 app.get('/hero/:name', getHero)
 
-app.listen(4000, () => {
-  console.log('Listening...')
+app.listen(serverPort, () => {
+  console.log(`Listening on port ${serverPort}`)
 })
 
 let heroModel = {}
